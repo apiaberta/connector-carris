@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'apiaberta-carris',
-    script: 'src/index.js',
+    script: 'src/server.js',
     env: {
       NODE_ENV: 'production',
       PORT: 3017,
