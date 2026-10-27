@@ -1,0 +1,52 @@
+[
+  {
+    "id": "010001",
+    "long_name": "Marquês de Pombal",
+    "lat": 38.725,
+    "lon": -9.150,
+    "line_ids": ["1101", "1001"],
+    "municipality_id": "1106",
+    "municipality_name": "Lisboa",
+    "locality": "Lisboa"
+  },
+  {
+    "id": "010002",
+    "name": "Reboleira (Estação)",
+    "lat": 38.752,
+    "lon": -9.219,
+    "line_ids": ["1001"],
+    "municipality_id": "1115",
+    "municipality_name": "Amadora",
+    "locality_name": "Reboleira"
+  },
+  {
+    "id": "140023",
+    "long_name": "Laranjeiro",
+    "lat": 38.6266,
+    "lon": -9.0831,
+    "line_ids": ["3615"],
+    "municipality_id": "1503",
+    "municipality_name": "Almada",
+    "locality": "Laranjeiro"
+  },
+  {
+    "id": "020001",
+    "long_name": "Vila Franca de Xira",
+    "lat": 38.955,
+    "lon": -8.990,
+    "line_ids": ["2306", "2307"],
+    "municipality_id": "1114",
+    "municipality_name": "Vila Franca de Xira",
+    "locality": "Vila Franca de Xira"
+  },
+  {
+    "id": "030001",
+    "long_name": "Av. D. João II",
+    "lat": 38.7713307,
+    "lon": -9.0977618,
+    "line_ids": [],
+    "municipality_id": "1106",
+    "municipality_name": null,
+    "locality_name": null
+  }
+]
