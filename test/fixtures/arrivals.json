@@ -1,0 +1,47 @@
+[
+  {
+    "trip_id": "t-1101-1",
+    "line_id": "1101",
+    "pattern_id": "1101_0_1",
+    "route_id": "1101_0",
+    "headsign": "Algés",
+    "stop_sequence": 4,
+    "scheduled_arrival": "2026-10-27T16:10:00Z",
+    "scheduled_arrival_unix": 1793117400,
+    "estimated_arrival": "2026-10-27T16:12:00Z",
+    "estimated_arrival_unix": 1793117520,
+    "observed_arrival": null,
+    "observed_arrival_unix": null,
+    "vehicle_id": "[BNA17]2532"
+  },
+  {
+    "trip_id": "t-1001-2",
+    "line_id": "1001",
+    "pattern_id": "1001_0_2",
+    "route_id": "1001_0",
+    "headsign": "Reboleira",
+    "stop_sequence": 8,
+    "scheduled_arrival": "2026-10-27T16:15:00Z",
+    "scheduled_arrival_unix": 1793117700,
+    "estimated_arrival": null,
+    "estimated_arrival_unix": null,
+    "observed_arrival": null,
+    "observed_arrival_unix": null,
+    "vehicle_id": null
+  },
+  {
+    "trip_id": "t-1101-past",
+    "line_id": "1101",
+    "pattern_id": "1101_0_1",
+    "route_id": "1101_0",
+    "headsign": "Algés",
+    "stop_sequence": 3,
+    "scheduled_arrival": "2026-10-27T15:50:00Z",
+    "scheduled_arrival_unix": 1793116200,
+    "estimated_arrival": null,
+    "estimated_arrival_unix": null,
+    "observed_arrival": "2026-10-27T15:51:00Z",
+    "observed_arrival_unix": 1793116260,
+    "vehicle_id": "[41]1001"
+  }
+]

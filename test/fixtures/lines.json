@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1101",
+    "short_name": "1101",
+    "long_name": "Marquês de Pombal - Algés",
+    "color": "#C61D23",
+    "text_color": "#FFFFFF",
+    "pattern_ids": ["1101_0_1", "1101_1_1"],
+    "route_ids": ["1101_0", "1101_1"],
+    "municipality_ids": ["1106"]
+  },
+  {
+    "id": "1001",
+    "short_name": "1001",
+    "long_name": "Alfragide (Estr Seminario) - Reboleira (Estação)",
+    "color": "#0C479D",
+    "text_color": "#FFFFFF",
+    "pattern_ids": ["1001_0_2", "1001_0_1"],
+    "route_ids": ["1001_0"],
+    "municipality_ids": ["1115", "1106"]
+  }
+]

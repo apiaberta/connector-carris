@@ -1,0 +1,40 @@
+[
+  {
+    "active_period": [{ "start": 1793116800, "end": 1793203200 }],
+    "cause": "CONSTRUCTION",
+    "effect": "DETOUR",
+    "header_text": {
+      "translation": [
+        { "language": "pt", "text": "Vila Franca de Xira: corte de via" },
+        { "language": "en", "text": "Vila Franca de Xira: road closure" }
+      ]
+    },
+    "description_text": {
+      "translation": [
+        { "language": "pt", "text": "Linhas 2306 e 2307 com alterações temporárias de percurso." },
+        { "language": "en", "text": "Lines 2306 and 2307 with temporary detours." }
+      ]
+    },
+    "informed_entity": [
+      { "agency_id": "BNA17", "route_id": "[BNA17]2306_0" },
+      { "agency_id": "BNA17", "route_id": "[BNA17]2307_0" },
+      { "stop_id": "020001" }
+    ],
+    "url": { "translation": [{ "language": "pt", "text": "https://www.carrismetropolitana.pt/aviso/1" }] }
+  },
+  {
+    "id": "alert-strike-42",
+    "active_period": [{ "start": 1793140800, "end": 1793227200 }],
+    "cause": "STRIKE",
+    "effect": "REDUCED_SERVICE",
+    "header_text": {
+      "translation": [{ "language": "pt", "text": "Greve de motoristas" }]
+    },
+    "description_text": {
+      "translation": [{ "language": "pt", "text": "Serviço reduzido em todas as linhas." }]
+    },
+    "informed_entity": [
+      { "agency_id": "41", "route_id": "1101_0" }
+    ]
+  }
+]
