@@ -1,4 +1,4 @@
-import { SERVICE_NAME, VERSION } from './config.js'
+import { SERVICE_NAME, VERSION, parseVehiclesPollMs } from './config.js'
 import { Alert } from './models/alert.js'
 import { Line } from './models/line.js'
 import { Stop } from './models/stop.js'
@@ -39,7 +39,7 @@ export async function metaRoutes(app) {
       description: 'Realtime vehicles, alerts, stops and lines from Carris Metropolitana',
       source:      'https://api.carrismetropolitana.pt',
       license:     'Open data – Carris Metropolitana/TML',
-      update_freq: 'vehicles 30s, alerts 5min, stops/lines daily',
+      update_freq: `vehicles ${Math.round(parseVehiclesPollMs() / 1000)}s, alerts 5min, stops/lines daily`,
       endpoints: [
         { path: '/v1/carris/vehicles',             description: 'Realtime vehicles (optional line_id, route_id, bbox)' },
         { path: '/v1/carris/vehicles/:id',         description: 'Single vehicle' },

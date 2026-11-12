@@ -5,7 +5,11 @@ module.exports = {
     env: {
       NODE_ENV: 'production',
       PORT: 3017,
-      MONGO_URI: 'mongodb://localhost:27017/apiaberta-carris'
+      MONGO_URI: 'mongodb://localhost:27017/apiaberta-carris',
+      VEHICLES_POLL_MS: '90000',
+      VEHICLES_PERSIST: 'changed',
+      VEHICLES_SNAPSHOT_MAX: '4000',
+      VEHICLES_SNAPSHOT_TTL_MS: '600000'
     },
     autorestart: true,
     max_restarts: 10,
