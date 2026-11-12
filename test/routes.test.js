@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { TtlLruCache } from '../src/cache.js'
+import { VERSION, parseVehiclesPollMs } from '../src/config.js'
 import { buildApp, createSnapshot } from '../src/index.js'
 import { normVehicle } from '../src/transform.js'
 
@@ -91,7 +92,7 @@ describe('routes', () => {
       const body = res.json()
       assert.equal(body.status, 'ok')
       assert.equal(body.service, 'connector-carris')
-      assert.equal(body.version, '1.0.0')
+      assert.equal(body.version, VERSION)
       assert.ok(body.timestamp)
     } finally {
       await app.close()
@@ -187,6 +188,55 @@ describe('routes', () => {
       const res = await app.inject({ method: 'GET', url: '/carris/stops/unknown/arrivals' })
       assert.equal(res.statusCode, 404)
       assert.deepEqual(res.json(), { error: 'Not found' })
+    } finally {
+      await app.close()
+    }
+  })
+
+  it('GET /carris/meta keeps the public shape and reports the poll interval', async () => {
+    const app = await makeApp()
+    try {
+      const res = await app.inject({ method: 'GET', url: '/carris/meta' })
+      assert.equal(res.statusCode, 200)
+      const body = res.json()
+      assert.equal(body.connector, 'connector-carris')
+      assert.equal(body.version, VERSION)
+      assert.equal(
+        body.update_freq,
+        `vehicles ${Math.round(parseVehiclesPollMs() / 1000)}s, alerts 5min, stops/lines daily`
+      )
+      assert.ok(Array.isArray(body.endpoints))
+      assert.ok(body.stats)
+      assert.equal(typeof body.stats.vehicles, 'number')
+    } finally {
+      await app.close()
+    }
+  })
+
+  it('falls back to Mongo when the in-memory snapshot is empty, same vehicle shape', async () => {
+    const snapshot = createSnapshot()
+    const models = stubModels()
+    models.Vehicle.find = () => ({
+      lean: async () => [{
+        id: 'from-mongo',
+        line_id: '1101',
+        route_id: '1101_0',
+        lat: 38.7,
+        lon: -9.1,
+        timestamp: new Date('2026-11-12T22:00:00Z')
+      }]
+    })
+    const app = await makeApp({ snapshot, models })
+    try {
+      const res = await app.inject({ method: 'GET', url: '/carris/vehicles' })
+      assert.equal(res.statusCode, 200)
+      const body = res.json()
+      assert.equal(body.stale, true)
+      assert.equal(body.count, 1)
+      assert.equal(body.data[0].id, 'from-mongo')
+      assert.equal(body.data[0].line_id, '1101')
+      assert.equal(body.data[0].door_status, undefined)
+      assert.equal(body.data[0].seen_at, undefined)
     } finally {
       await app.close()
     }

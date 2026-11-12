@@ -70,8 +70,11 @@ function listVehicles(snapshot, query) {
   const route_id = query.route_id
   let bbox = null
   if (query.bbox) bbox = parseBbox(query.bbox)
-  const all = [...(snapshot?.vehicles?.values() ?? [])]
-  return all.filter(v => matchVehicle(v, { line_id, route_id, bbox }))
+  const out = []
+  for (const v of snapshot?.vehicles?.values() ?? []) {
+    if (matchVehicle(v, { line_id, route_id, bbox })) out.push(v)
+  }
+  return out
 }
 
 function pageVehicles(filtered, query) {
@@ -387,9 +390,10 @@ export async function carrisRoutes(app) {
     const { Line: LineModel } = modelsOf(app)
     const line = await leanFindOne(LineModel, { id: req.params.id })
     if (!line) return reply.code(404).send({ error: 'Not found' })
-    const vehicles = [...(app.snapshot?.vehicles?.values() ?? [])]
-      .filter(v => v.line_id === req.params.id)
-      .map(formatVehicle)
+    const vehicles = []
+    for (const v of app.snapshot?.vehicles?.values() ?? []) {
+      if (v.line_id === req.params.id) vehicles.push(formatVehicle(v))
+    }
     return {
       ...formatLine(line),
       vehicles,
